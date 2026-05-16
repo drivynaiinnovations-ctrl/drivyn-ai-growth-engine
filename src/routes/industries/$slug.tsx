@@ -197,7 +197,7 @@ function IndustryPage() {
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
-            {data.pains.map((p, i) => (
+            {data.pains.map((p: string, i: number) => (
               <div key={p} className="card-hover rounded-2xl p-6">
                 <span className="text-xs font-semibold tracking-[0.2em] text-primary">0{i + 1}</span>
                 <p className="mt-3 text-base font-medium leading-snug">{p}</p>
@@ -217,7 +217,7 @@ function IndustryPage() {
             </h2>
           </div>
           <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {data.solutions.map(s => (
+            {data.solutions.map((s: string) => (
               <div key={s} className="card-hover flex items-start gap-3 rounded-2xl bg-white p-6">
                 <span className="mt-0.5 grid h-7 w-7 flex-none place-items-center rounded-full bg-primary text-primary-foreground">
                   <Check className="h-4 w-4" />
