@@ -284,13 +284,13 @@ function HomePage() {
       </section>
 
       {/* THE STAT */}
-      <section className="bg-primary py-20 md:py-28">
-        <div className="container-x text-primary-foreground">
+      <section className="bg-foreground py-20 md:py-28">
+        <div className="container-x text-white">
           <p className="text-balance text-3xl font-semibold leading-[1.15] md:text-5xl lg:text-6xl">
-            A customer who visits your business <span className="underline decoration-white/40 decoration-4 underline-offset-8">3 times</span> is{" "}
-            <span className="rounded-md bg-white/15 px-2 py-0.5">67% more likely</span> to keep coming back.
+            A customer who visits your business <span className="underline decoration-primary/70 decoration-4 underline-offset-8">3 times</span> is{" "}
+            <span className="rounded-md bg-primary px-2 py-0.5 text-primary-foreground">67% more likely</span> to keep coming back.
           </p>
-          <p className="mt-6 max-w-2xl text-lg font-medium text-white/85 md:text-xl">
+          <p className="mt-6 max-w-2xl text-lg font-medium text-white/75 md:text-xl">
             Are you building that relationship — or leaving it to chance?
           </p>
         </div>
