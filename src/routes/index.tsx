@@ -96,14 +96,14 @@ const INDUSTRIES_HOME = [
 ];
 
 const CASE_STUDIES = [
-  { tag: "Restaurant",         name: "Smoothie King",    problem: "Heavy reliance on third-party delivery and no system to bring customers back.", built: "Direct ordering setup, loyalty funnel, review auto-responder, 3-visit retention strategy.", result: "Higher margin orders and repeat-visit revenue compounding monthly." },
-  { tag: "Restaurant",         name: "Burnbox",          problem: "No brand identity, no online presence, no ordering flow.", built: "Branding, custom website, seamless ordering, marketing automation.", result: "Launched a fully functional brand and order pipeline ready to scale." },
-  { tag: "Emergency Services", name: "Night Owls",       problem: "After-hours calls were going unanswered.", built: "24/7 AI phone agent, emergency call routing, instant booking.", result: "Every call captured. Every emergency converted into revenue." },
-  { tag: "Brick & Mortar",     name: "GC Elevators",     problem: "Outdated website that wasn't winning trust or jobs.", built: "Full redesign, Google profile optimization, retention funnels.", result: "Modern presence that converts visitors into qualified leads.", featured: true },
-  { tag: "Security",           name: "Student Watchers", problem: "No web presence to win client trust or contracts.", built: "Credibility-first website, SEO, lead gen automation, proposal follow-up.", result: "Professional authority and a real lead pipeline." },
-  { tag: "Software",           name: "OSP",              problem: "Specialty offshore + local tech firm needing infrastructure and automation.", built: "Custom infrastructure build, automated ops layer, integrated tooling.", result: "Operational backbone built for scale." },
-  { tag: "Professional Services", name: "Coming Soon", placeholder: true, problem: "Reserved for our next professional services partner.", built: "Full business setup, SOPs, CRM, AI follow-up.", result: "Mock redesign showcase available on request." },
-  { tag: "Pet Services",       name: "Coming Soon", placeholder: true, problem: "Reserved for our next pet services partner.", built: "Online booking, AI scheduling, retention funnels.", result: "Mock redesign showcase available on request." },
+  { slug: "smoothie-king",                   tag: "Restaurant",         name: "Smoothie King",    problem: "Heavy reliance on third-party delivery and no system to bring customers back.", built: "Direct ordering setup, loyalty funnel, review auto-responder, 3-visit retention strategy.", result: "Higher margin orders and repeat-visit revenue compounding monthly." },
+  { slug: "burnbox",                         tag: "Restaurant",         name: "Burnbox",          problem: "No brand identity, no online presence, no ordering flow.", built: "Branding, custom website, seamless ordering, marketing automation.", result: "Launched a fully functional brand and order pipeline ready to scale." },
+  { slug: "night-owls",                      tag: "Emergency Services", name: "Night Owls",       problem: "After-hours calls were going unanswered.", built: "24/7 AI phone agent, emergency call routing, instant booking.", result: "Every call captured. Every emergency converted into revenue." },
+  { slug: "gc-elevators",                    tag: "Brick & Mortar",     name: "GC Elevators",     problem: "Outdated website that wasn't winning trust or jobs.", built: "Full redesign, Google profile optimization, retention funnels.", result: "Modern presence that converts visitors into qualified leads.", featured: true },
+  { slug: "student-watchers",                tag: "Security",           name: "Student Watchers", problem: "No web presence to win client trust or contracts.", built: "Credibility-first website, SEO, lead gen automation, proposal follow-up.", result: "Professional authority and a real lead pipeline." },
+  { slug: "osp",                             tag: "Software",           name: "OSP",              problem: "Specialty offshore + local tech firm needing infrastructure and automation.", built: "Custom infrastructure build, automated ops layer, integrated tooling.", result: "Operational backbone built for scale." },
+  { slug: "professional-services-coming-soon", tag: "Professional Services", name: "Coming Soon", placeholder: true, problem: "Reserved for our next professional services partner.", built: "Full business setup, SOPs, CRM, AI follow-up.", result: "Mock redesign showcase available on request." },
+  { slug: "pet-services-coming-soon",        tag: "Pet Services",       name: "Coming Soon", placeholder: true, problem: "Reserved for our next pet services partner.", built: "Online booking, AI scheduling, retention funnels.", result: "Mock redesign showcase available on request." },
 ];
 
 function HomePage() {
@@ -266,7 +266,12 @@ function HomePage() {
 
           <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {CASE_STUDIES.map(c => (
-              <article key={c.name + c.tag} className={`card-hover rounded-2xl p-7 ${c.featured ? "lg:col-span-2 bg-foreground text-white" : "bg-white"}`}>
+              <Link
+                key={c.slug}
+                to="/case-studies/$slug"
+                params={{ slug: c.slug }}
+                className={`card-hover group block rounded-2xl p-7 ${c.featured ? "lg:col-span-2 bg-foreground text-white" : "bg-white"}`}
+              >
                 <div className="flex items-center justify-between">
                   <span className={`inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider ${c.featured ? "bg-primary text-primary-foreground" : "bg-accent text-primary"}`}>
                     {c.tag}
@@ -277,7 +282,10 @@ function HomePage() {
                 <Detail featured={c.featured} label="The Problem" body={c.problem} />
                 <Detail featured={c.featured} label="What We Built" body={c.built} />
                 <Detail featured={c.featured} label="The Transformation" body={c.result} />
-              </article>
+                <span className={`mt-5 inline-flex items-center gap-1.5 text-sm font-semibold ${c.featured ? "text-primary" : "text-primary"}`}>
+                  Read case study <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
             ))}
           </div>
         </div>
